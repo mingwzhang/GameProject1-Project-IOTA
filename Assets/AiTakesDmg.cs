@@ -1,28 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles damage taking and destruction logic for an AI character.
+/// </summary>
 public class AiTakesDmg : MonoBehaviour
 {
+    private float health = 50f;
+    private ObjectiveCheck objectiveCheck;
 
-    public float health = 50f;
-
-    public ObjectiveCheck objectivecheck;
-    public void TakeDmg(float amount)
+    // Inflicts damage to the AI character.
+    public void TakeDamage(float amount)
     {
         health -= amount;
 
-        if(health <= 0f)
+        if (health <= 0f)
         {
             Die();
         }
     }
 
-
-
-    void Die()
+    // Destroys the AI character and notifies the ObjectiveCheck component.
+    private void Die()
     {
         Destroy(gameObject);
-        objectivecheck.loseAi();
+        NotifyObjectiveCheck();
+    }
+
+    // Notifies the ObjectiveCheck component about the AI character's destruction.
+    private void NotifyObjectiveCheck()
+    {
+        if (objectiveCheck != null)
+        {
+            objectiveCheck.loseAi();
+        }
+        else
+        {
+            Debug.LogWarning("ObjectiveCheck reference not set in AiTakesDmg.");
+        }
     }
 }

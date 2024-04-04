@@ -50,7 +50,7 @@ public class gun : MonoBehaviour
             AiTakesDmg target = hit.transform.GetComponent<AiTakesDmg>();
             if(target != null)
             {
-                target.TakeDmg(damage);
+                target.TakeDamage(damage);
             }
         }
     }

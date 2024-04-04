@@ -2,22 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Controls picking up and interacting with objects in the scene.
+/// </summary>
 public class PickUpControl : MonoBehaviour
 {
-    [Header("InteractableInfo")]
-    public float sphereCastRadius = 0.5f;
-    public int interactableLayerIndex;
+    [Header("Interactable Info")]
+    [SerializeField] private float sphereCastRadius = 0.5f;
+    [SerializeField] private int interactableLayerIndex;
     private Vector3 raycastPos;
-    public GameObject lookObject;
+    [SerializeField] private GameObject lookObject;
     private PhysicsObject physicsObject;
     private Camera mainCamera;
 
     [Header("Pickup")]
     [SerializeField] private Transform pickupParent;
-    public GameObject currentlyPickedUpObject;
+    private GameObject currentlyPickedUpObject;
     private Rigidbody pickupRB;
 
-    [Header("ObjectFollow")]
+    [Header("Object Follow")]
     [SerializeField] private float minSpeed = 0;
     [SerializeField] private float maxSpeed = 300f;
     [SerializeField] private float maxDistance = 10f;
@@ -25,25 +28,25 @@ public class PickUpControl : MonoBehaviour
     private float currentDist = 0f;
 
     [Header("Rotation")]
-    public float rotationSpeed = 100f;
-    Quaternion lookRot;
+    [SerializeField] private float rotationSpeed = 100f;
+    private Quaternion lookRot;
 
     private void Start()
     {
         mainCamera = Camera.main;
     }
 
-    //A simple visualization of the point we're following in the scene view
+    // A simple visualization of the point we're following in the scene view
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawSphere(pickupParent.position, 0.5f);
     }
 
-    //Interactable Object detections and distance check
+    // Interactable Object detections and distance check
     void Update()
     {
-        //Here we check if we're currently looking at an interactable object
+        // Check if we're currently looking at an interactable object
         raycastPos = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 0));
         RaycastHit hit;
         if (Physics.SphereCast(raycastPos, sphereCastRadius, mainCamera.transform.forward, out hit, maxDistance, 1 << interactableLayerIndex))
@@ -55,33 +58,26 @@ public class PickUpControl : MonoBehaviour
             lookObject = null;
         }
 
-
-
-        //if we press the button of choice
+        // Check if the pickup button is pressed
         if (Input.GetMouseButtonDown(0))
         {
             FindObjectOfType<AudioManager>().Stop("gun equipped");
             FindObjectOfType<AudioManager>().Stop("Laser Gun 2");
-            //and we're not holding anything
-            if (currentlyPickedUpObject == null)
+
+            // Check if we're not holding anything and looking at an interactable object
+            if (currentlyPickedUpObject == null && lookObject != null)
             {
-                //and we are looking an interactable object
-                if (lookObject != null)
-                {
-                    PickUpObject();
-                }
+                PickUpObject(); // Pick up the object
             }
-            //if we press the pickup button and have something, we drop it
-            else
+            // Check if we press the pickup button and have something, then drop it
+            else if (currentlyPickedUpObject != null)
             {
-                BreakConnection();
+                BreakConnection(); // Release the object
             }
         }
-
-
     }
 
-    //Velocity movement toward pickup parent and rotation
+    // Velocity movement toward pickup parent and rotation
     private void FixedUpdate()
     {
         if (currentlyPickedUpObject != null)
@@ -91,15 +87,15 @@ public class PickUpControl : MonoBehaviour
             currentSpeed *= Time.fixedDeltaTime;
             Vector3 direction = pickupParent.position - pickupRB.position;
             pickupRB.velocity = direction.normalized * currentSpeed;
-            //Rotation
+
+            // Rotation
             lookRot = Quaternion.LookRotation(mainCamera.transform.position - pickupRB.position);
             lookRot = Quaternion.Slerp(mainCamera.transform.rotation, lookRot, rotationSpeed * Time.fixedDeltaTime);
             pickupRB.MoveRotation(lookRot);
         }
-
     }
 
-    //Release the object
+    // Release the object
     public void BreakConnection()
     {
         pickupRB.constraints = RigidbodyConstraints.None;
@@ -108,6 +104,7 @@ public class PickUpControl : MonoBehaviour
         currentDist = 0;
     }
 
+    // Pick up the object
     public void PickUpObject()
     {
         physicsObject = lookObject.GetComponentInChildren<PhysicsObject>();
@@ -117,6 +114,4 @@ public class PickUpControl : MonoBehaviour
         physicsObject.playerInteractions = this;
         StartCoroutine(physicsObject.PickUp());
     }
-
-
 }
