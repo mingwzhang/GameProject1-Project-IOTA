@@ -3,7 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Item
+  - AI
+  - Datapad
+  - Keypad
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - Gun
   layers:
   - Default
   - TransparentFX
@@ -12,17 +23,17 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Interactable
+  - Enemy
+  - Obstables Only (Left click)
+  - Datapad
+  - Keypad
+  - Elevator
+  - Extra Puzzle
+  - Life Support Puzzle
+  - LowHp
+  - Gun
   - 
   - 
   - 

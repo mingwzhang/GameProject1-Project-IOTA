@@ -6,7 +6,7 @@ public class Movement : MonoBehaviour
 {
     public CharacterController controller;
 
-    public float speed = 12f;
+    public float speed = 50f;
     public float gravity = -9.81f;
 
     public Transform groundCheck;
