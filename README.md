@@ -38,8 +38,14 @@ Project IOTA is a first-person puzzle game that revolves around exploring a base
 
 Unity
 
+## Game Design Document (GDD)
+
+[View the Game Design Document (GDD)](Project%20IOTA%20GDD%20V01.pdf)
+
 ## Links
 
-- [Download Game](https://mindeveloper.itch.io/project-iota)
+[Download Game](https://mindeveloper.itch.io/project-iota)
+
+---
 
 Thank you for checking out Project IOTA! We hope you enjoy playing it as much as we enjoyed creating it.
