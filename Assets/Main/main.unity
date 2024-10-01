@@ -121079,8 +121079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e5c3eaf4dd1bee40a17459596e0816f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goal: {fileID: 1978911671}
-  speed: 20
+  playerTransform: {fileID: 1978911671}
   wayPoints:
   - {fileID: 887506233}
   - {fileID: 1558178406}
@@ -121088,12 +121087,11 @@ MonoBehaviour:
   - {fileID: 527895243}
   - {fileID: 206231537}
   - {fileID: 908683453}
-  isPatrol: 1
-  playerInSightRange: 0
   sightRange: 50
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128
+  patrolDistanceThreshold: 0.5
 --- !u!195 &1064681624
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -140163,8 +140161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e5c3eaf4dd1bee40a17459596e0816f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goal: {fileID: 1978911671}
-  speed: 20
+  playerTransform: {fileID: 1978911671}
   wayPoints:
   - {fileID: 255559680}
   - {fileID: 527895243}
@@ -140172,12 +140169,11 @@ MonoBehaviour:
   - {fileID: 1558178406}
   - {fileID: 206231537}
   - {fileID: 908683453}
-  isPatrol: 1
-  playerInSightRange: 0
   sightRange: 50
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128
+  patrolDistanceThreshold: 0.5
 --- !u!195 &1286033026
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -162444,8 +162440,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0851de44b2846c42b697c56b81fd044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  objectivecheck: {fileID: 1695213149}
 --- !u!82 &1383735007
 AudioSource:
   m_ObjectHideFlags: 0
@@ -162590,8 +162584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e5c3eaf4dd1bee40a17459596e0816f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goal: {fileID: 1978911671}
-  speed: 20
+  playerTransform: {fileID: 1978911671}
   wayPoints:
   - {fileID: 887506233}
   - {fileID: 255559680}
@@ -162599,12 +162592,11 @@ MonoBehaviour:
   - {fileID: 908683453}
   - {fileID: 206231537}
   - {fileID: 527895243}
-  isPatrol: 1
-  playerInSightRange: 0
   sightRange: 50
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128
+  patrolDistanceThreshold: 0.5
 --- !u!95 &1383735011
 Animator:
   serializedVersion: 3
@@ -243661,7 +243653,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 363.32}
+  m_AnchoredPosition: {x: 0, y: 484}
   m_SizeDelta: {x: 173.5008, y: 45.8155}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1943016087
@@ -244780,7 +244772,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9691ce4daa987e64c9d76e9c503b485d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isGrounded: 0
   speed: 800
   jumpForce: 15
   gravitySpeed: 300
@@ -244882,7 +244873,6 @@ MonoBehaviour:
   interactableLayerIndex: 10
   lookObject: {fileID: 0}
   pickupParent: {fileID: 325037630}
-  currentlyPickedUpObject: {fileID: 0}
   minSpeed: 0
   maxSpeed: 1000
   maxDistance: 10
@@ -257641,8 +257631,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0851de44b2846c42b697c56b81fd044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  objectivecheck: {fileID: 1695213149}
 --- !u!82 &2083455012
 AudioSource:
   m_ObjectHideFlags: 0
@@ -257787,8 +257775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e5c3eaf4dd1bee40a17459596e0816f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goal: {fileID: 1978911671}
-  speed: 20
+  playerTransform: {fileID: 1978911671}
   wayPoints:
   - {fileID: 527895243}
   - {fileID: 255559680}
@@ -257796,12 +257783,11 @@ MonoBehaviour:
   - {fileID: 1558178406}
   - {fileID: 206231537}
   - {fileID: 887506233}
-  isPatrol: 1
-  playerInSightRange: 0
   sightRange: 50
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128
+  patrolDistanceThreshold: 0.5
 --- !u!95 &2083455016
 Animator:
   serializedVersion: 3
@@ -261738,8 +261724,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0851de44b2846c42b697c56b81fd044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  objectivecheck: {fileID: 1695213149}
 --- !u!1 &919132147777603568
 GameObject:
   m_ObjectHideFlags: 0
@@ -261985,8 +261969,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0851de44b2846c42b697c56b81fd044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  objectivecheck: {fileID: 1695213149}
 --- !u!1 &919132148063812612
 GameObject:
   m_ObjectHideFlags: 0
